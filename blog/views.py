@@ -13,8 +13,6 @@ def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
 
     if request.user.is_active:
-      print(dir(request))
-      print(request.method)
       if request.method == "POST":
         comment_form = CommentForm(request.POST)
 
