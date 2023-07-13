@@ -3,7 +3,6 @@ from django.utils import timezone
 from blog.models import Post
 from blog.forms import CommentForm
 from django.shortcuts import redirect
-
 import logging
 
 logger = logging.getLogger(__name__)
