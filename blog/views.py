@@ -9,7 +9,11 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 def index(request):
-    posts = Post.objects.filter(published_at__lte=timezone.now()).select_related("author")
+    posts = (
+      Post.objects.filter(published_at__lte=timezone.now())
+      .select_related("author")
+      .defer("slug", "created_at", "modified_at")
+    )
 
     logger.debug("Got %d posts", len(posts))
 
